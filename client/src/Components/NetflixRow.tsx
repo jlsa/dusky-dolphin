@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api/axios';
-import './Row.scss';
+import './NetflixRow.scss';
 import SliderButton from './SliderButton';
 
-type RowProps = {
+type NetflixRowProps = {
   title: string,
   fetchUrl: string,
   id: string
   isLargeRow?: boolean,
 }
 
-const Row = ({ title, fetchUrl, id, isLargeRow }: RowProps) => {
+const NetflixRow = ({ title, fetchUrl, id, isLargeRow }: NetflixRowProps) => {
   const baseUrl: string = 'https://image.tmdb.org/t/p/original/';
   const [movies, setMovies] = useState([]);
-  const [modalVisibility, setModalVisibility] = useState(false);
-  const [movieSelected, setMovieSelected] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -25,11 +23,6 @@ const Row = ({ title, fetchUrl, id, isLargeRow }: RowProps) => {
 
     fetchData();
   }, [fetchUrl]);
-
-  const handleClick = (movie: any) => {
-    setModalVisibility(true);
-    setMovieSelected(movie);
-  }
   
   return (
     <section className='row'>
@@ -53,21 +46,22 @@ const Row = ({ title, fetchUrl, id, isLargeRow }: RowProps) => {
               }
             }
             return (
-              <img
-              key={movie.id}
-              onClick={() => handleClick(movie)}
-              className={`row__poster ${isLargeRow && 'row__posterLarge'}`}
-              src={imgSrc}
-              loading="lazy"
-              alt={movie.name} />
+              <>
+                <img
+                  key={movie.id}
+                  onClick={() => console.log(movie)}
+                  className={`row__poster ${isLargeRow && 'row__posterLarge'}`}
+                  src={imgSrc}
+                  loading="lazy"
+                  alt={movie.name}/>
+              </>
             )
           })}
         </div>
         <SliderButton elementId={id} label='>' direction='right' />
       </div>
-      {/* {modalVisibility && <MovieModal {...movieSelected} setModalVisibility={setModalVisibility} />} */}
     </section>
   )
 }
 
-export default Row;
+export default NetflixRow;

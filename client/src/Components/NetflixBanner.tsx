@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from "../api/axios";
-import requests from '../api/requests';
-import './Banner.scss';
+import './NetflixBanner.scss';
 
-type BannerProps = {
+type NetflixBannerProps = {
   fetchUrl: string
 }
 
-const Banner = ({fetchUrl}: BannerProps) => {
+const NetflixBanner = ({fetchUrl}: NetflixBannerProps) => {
   const [movie, setMovie] = useState<any>([]);
 
   const truncate = (str: string, n: number) => {
@@ -28,7 +27,7 @@ const Banner = ({fetchUrl}: BannerProps) => {
     }
 
     fetchData();
-  }, []);
+  }, [fetchUrl]);
 
   return (
     <header 
@@ -54,4 +53,4 @@ const Banner = ({fetchUrl}: BannerProps) => {
   )
 }
 
-export default Banner;
+export default NetflixBanner;

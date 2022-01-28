@@ -6,8 +6,8 @@ import './App.scss';
 
 // import gamesData from './data/games.json';
 import requests from './api/requests';
-import Row from './Components/Row';
-import Banner from './Components/Banner';
+import NetflixRow from './Components/NetflixRow';
+import NetflixBanner from './Components/NetflixBanner';
 
 const App = () => {
   return (
@@ -20,56 +20,56 @@ const App = () => {
         </Shelve>
       </div> */}
       <div className="app">
-        <Banner fetchUrl={requests.fetchNetflixOriginals}/>
-        <Row 
+        <NetflixBanner fetchUrl={requests.fetchNetflixOriginals}/>
+        <NetflixRow 
           title="NETFLIX ORIGINALS"
           id="NO"
           fetchUrl={requests.fetchNetflixOriginals}
           isLargeRow
         />
-        <Row 
+        <NetflixRow 
           title="Trending Now"
           id="TN"
           fetchUrl={requests.fetchTrending}
         />
-        <Row 
+        <NetflixRow 
           title="Top Rated"
           id="TR"
           fetchUrl={requests.fetchTopRated}
         />
-        <Row 
+        <NetflixRow 
           title="Movies Of This Year"
           id="TYM"
           fetchUrl={requests.fetchMoviesOfThisYear}
           isLargeRow
         />
-        <Row 
+        <NetflixRow 
           title="Action Movies"
           id="AM"
           fetchUrl={requests.fetchActionMovies}
         />
-        <Row 
+        <NetflixRow 
           title="Movies Of Last Year"
           id="LYM"
           fetchUrl={requests.fetchMoviesOfLastYear}
           isLargeRow
         />
-        <Row 
+        <NetflixRow 
           title="Comedie Movies"
           id="CM"
           fetchUrl={requests.fetchComedyMovies}
         />
-        <Row 
+        <NetflixRow 
           title="Horror Movies"
           id="HM"
           fetchUrl={requests.fetchHorrorMovies}
         />
-        <Row 
+        <NetflixRow 
           title="Romance Movies"
           id="RM"
           fetchUrl={requests.fetchRomanceMovies}
         />
-        <Row 
+        <NetflixRow 
           title="Documentaries"
           id="DM"
           fetchUrl={requests.fetchDocumentaries}
